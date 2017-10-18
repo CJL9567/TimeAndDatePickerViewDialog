@@ -1,4 +1,12 @@
 # TimeAndDatePickerViewDialog
+
+引入
+compile 'com.github.CJL9567:TimeAndDatePickerViewDialog:v1.0.2'
+
+
+
+
+
 时间和日期选择器
 一、日期选择器
   1、创建DatePickerViewDialog 并实现回调函数DatePickerViewDialogCallBack，DatePickerViewDialogCallBack返回选中的状态
