@@ -109,7 +109,12 @@ public class DatePickerViewDialog extends Dialog implements NumberPickerView.OnV
         cancelText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerViewDialogCallBack.datePickerViewDialogCallBack("","","");
+                if (datePickerViewDialogCallBack!=null){
+                    datePickerViewDialogCallBack.datePickerViewDialogCallBack("","","");
+                }else {
+                    dismiss();
+                }
+
             }
         });
     }

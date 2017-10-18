@@ -74,7 +74,12 @@ public class TimePickerViewDialog extends Dialog implements NumberPickerView.OnV
         cancelText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timePickerViewCallBack.timePickerViewCallBack("","");
+                if (timePickerViewCallBack!=null){
+                    timePickerViewCallBack.timePickerViewCallBack("","");
+                }else {
+                    dismiss();
+                }
+
             }
         });
     }
