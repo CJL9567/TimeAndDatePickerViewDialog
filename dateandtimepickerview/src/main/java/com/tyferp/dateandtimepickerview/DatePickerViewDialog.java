@@ -97,16 +97,19 @@ public class DatePickerViewDialog extends Dialog implements NumberPickerView.OnV
                 String m=mPickerViewM.getContentByCurrValue();
                 String d=mPickerViewD.getContentByCurrValue();
 
+                if (datePickerViewDialogCallBack!=null){
+                    datePickerViewDialogCallBack.datePickerViewDialogCallBack(y,m,d);
+                }else {
+                    dismiss();
+                }
 
 
-                datePickerViewDialogCallBack.datePickerViewDialogCallBack(y+getContext().getString(R.string.year_hint)
-                        +m+getContext().getString(R.string.month_hint)+d+getContext().getString(R.string.day_hint));
             }
         });
         cancelText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerViewDialogCallBack.datePickerViewDialogCallBack("");
+                datePickerViewDialogCallBack.datePickerViewDialogCallBack("","","");
             }
         });
     }
@@ -127,7 +130,8 @@ public class DatePickerViewDialog extends Dialog implements NumberPickerView.OnV
     @Override
     public void onValueChange(NumberPickerView picker, int oldVal, int newVal) {
        if (picker.getId()==R.id.picker_year){
-           resultYear=picker.getValue();
+           resultYear=Integer.parseInt(yearValues[picker.getValue()]);
+
            maxDays=getDaysByYearMonth(resultYear,resultMonth);
            mPickerViewD.setDisplayedValues(dayValues);
            mPickerViewD.setMaxValue(dayValues.length-1);
@@ -144,7 +148,7 @@ public class DatePickerViewDialog extends Dialog implements NumberPickerView.OnV
     }
 
     public interface DatePickerViewDialogCallBack{
-        public void datePickerViewDialogCallBack(String date);
+        public void datePickerViewDialogCallBack(String year,String month,String day);
     }
 
 }

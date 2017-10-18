@@ -62,14 +62,19 @@ public class TimePickerViewDialog extends Dialog implements NumberPickerView.OnV
             public void onClick(View view) {
                 String h = mPickerViewH.getContentByCurrValue();
                 String m = mPickerViewM.getContentByCurrValue();
-                timePickerViewCallBack.timePickerViewCallBack(h + getContext().getString(R.string.hour_hint) + " "
-                        + m + getContext().getString(R.string.minute_hint));
+                if (timePickerViewCallBack!=null){
+                    timePickerViewCallBack.timePickerViewCallBack(h,
+                            m);
+                }else {
+                    dismiss();
+                }
+
             }
         });
         cancelText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                timePickerViewCallBack.timePickerViewCallBack("");
+                timePickerViewCallBack.timePickerViewCallBack("","");
             }
         });
     }
@@ -82,7 +87,7 @@ public class TimePickerViewDialog extends Dialog implements NumberPickerView.OnV
 
     //点击确定时的回调函数，返回选择的时间
     public interface TimePickerViewCallBack{
-        public void timePickerViewCallBack(String time);
+        public void timePickerViewCallBack(String hour,String minute);
     }
 
 }

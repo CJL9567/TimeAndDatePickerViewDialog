@@ -179,24 +179,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void timePickerViewCallBack(String time) {
-        if (time.equals("")){
+    public void timePickerViewCallBack(String hour,String minute) {
+        if (hour.equals("")){
             timePickerViewDialog.dismiss();
         }else {
             timePickerViewDialog.dismiss();
-            Toast toast=Toast.makeText(this,time,Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(this,hour+getString(R.string.hour_hint)+minute+getString(R.string.minute_hint),Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER,0,0);
             toast.show();
         }
     }
 
     @Override
-    public void datePickerViewDialogCallBack(String date) {
-        if (date.equals("")){
+    public void datePickerViewDialogCallBack(String year,String month,String day) {
+        if (year.equals("")){
             datePickerViewDialog.dismiss();
         }else {
             datePickerViewDialog.dismiss();
-            Toast toast=Toast.makeText(this,date,Toast.LENGTH_SHORT);
+            Toast toast=Toast.makeText(this,year+getString(com.tyferp.dateandtimepickerview.R.string.year_hint)
+                    +month+getString(com.tyferp.dateandtimepickerview.R.string.month_hint)+day+getString(com.tyferp.dateandtimepickerview.R.string.day_hint),Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER,0,0);
             toast.show();
         }
